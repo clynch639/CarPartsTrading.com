@@ -1,0 +1,130 @@
+<body>
+    <div class ="container" style="margin-top: 100px;">
+        <div class ="row">
+            <div class="col-sm-12">
+                <div *ngFor = "let tyre of tyre_list | async">
+                    <div class="card text-white bg-black mb-3" 
+                        style="width: 30rem; margin: auto">
+                        <div class="card-header">
+                            EAN: {{tyre.ean}}
+                        </div>
+                        <div class="card-header">
+                            Tyre: {{tyre.tyre}}
+                        </div>
+                        <div class="card-body">
+                            Season: {{tyre.season}}
+                        </div>
+                        <div class="card-body">
+                            Width: {{tyre.width}}
+                        </div>
+                        <div class="card-body">
+                            Height: {{tyre.height}}
+                        </div>
+                        <div class="card-body">
+                            Type: {{tyre.type}}
+                        </div>
+                            <div class="card-body">
+                            Seller: {{tyre.seller}}
+                        </div>
+                        <div class="card-header">
+                            <img src="assets/images/{{ tyre.image }}" height="275" width="300"/> 
+                        </div>
+                        <div class="card-body">
+                            Price: £{{tyre.price}}
+                        </div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="8ACP774BQ3Q6Q">
+                            <table>
+                            <tr><td><input type="hidden" name="on0" value="Retro Classic 080 Quantity">Retro Classic 080 Quantity</td></tr><tr><td><select name="os0">
+                                <option value="Option 1"> £{{tyre.price}}</option>
+                                <option value="Option 2">Option 2 £190.00 GBP</option>
+                                <option value="Option 3">Option 3 £260.00 GBP</option>
+                                <option value="Option 4">Option 4 £300.00 GBP</option>
+                            </select> </td></tr>
+                            </table>
+                            <input type="hidden" name="currency_code" value="GBP">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                            <img alt="" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card bg-light mb-3"
+                    style="width: 30rem; margin: auto"
+                    *ngFor = "let review of reviews | async">
+                    <div class="card-header">
+                        Review by {{review.username}}
+                    </div>
+                    <div class="card-body">
+                        {{ review.comment}}
+                    </div>
+                    <div class="card-footer">
+                        {{ review.stars}} stars
+                    </div>
+                    <button class="btn btn-primary" (click)="DeleteReview(review._id)">
+                        Delete Review
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <ng-container
+                    *ngIf ="authService.isAuthenticated$ | async;
+                    else loggedOut">
+                    <h2>Please review this carpart</h2>
+                    <form [formGroup] = "tyreReviewForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username"
+                                class="form-control" formControlName="username"
+                                [ngClass]="{ 'error': tyreReviewForm.controls.username.invalid &&
+                                                        tyreReviewForm.controls.username.touched }">
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Please leave a comment on this product and seller.</label>
+                            <textarea name="comment" id="comment" rows="3"
+                                    class="form-control" formControlName="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="stars">Please leave a rating (5 = best)</label>
+                            <select name="stars" id="stars"
+                                    class="form-control" formControlName="stars">
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 star</option>
+                                    <option value="3">3 star</option>
+                                    <option value="4">4 star</option>
+                                    <option value="5">5 star</option>
+                                
+                            </select>
+                        </div>
+                        <button type="submit"
+                                class="btn.btn-primary">Submit</button>
+                    </form>
+            </ng-container>
+            <ng-template #loggedOut>
+                <h2>Please login to place a review on this product</h2>
+            </ng-template>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+

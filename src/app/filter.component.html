@@ -1,0 +1,45 @@
+<body>
+    <div class ="container" style="margin-top: 100px;">
+        <div class ="row">
+            <div class="col-sm-12">
+                    <div class="card text-white bg-black mb-3" 
+                        style="width: 30rem; margin: auto">
+                        <div class="card-header">
+                            <img src="assets/images/{{ filter.image }}" height="275" width="300"/> 
+                        </div>
+                        <div class="card-header">
+                            Ean: {{filter.ean}}
+                        </div>
+                        <div class="card-header">
+                            Battery: {{filter.filter}}
+                        </div>
+                            <div class="card-body">
+                            Seller: {{filter.seller}}
+                        </div>
+                        <div class="card-body">
+                            Price: £{{filter.price}}
+                        </div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="XANGHAUYKF6WU">
+                            <table>
+                            <tr><td><input type="hidden" name="on0" value="Number of Filters">Number of Filters</td></tr><tr><td><select name="os0">
+                                <option value="1 Filter">1 Filter £{{filter.price}} GBP</option>
+                                <option value="2 Filters">2 Filters £20.00 GBP</option>
+                                <option value="3 Filters">3 Filters £30.00 GBP</option>
+                                <option value="4 Filters">4 Filters £40.00 GBP</option>
+                            </select> </td></tr>
+                            </table>
+                            <input type="hidden" name="currency_code" value="GBP">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                            <img alt="" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                            
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+

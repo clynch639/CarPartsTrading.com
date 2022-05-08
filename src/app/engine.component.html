@@ -1,0 +1,37 @@
+<body>
+    <div class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngFor="let oil of oil_list | async">
+                    <div class="card text-white bg-black mb-3" style="width: 30rem; margin: auto; cursor: pointer;"
+                    [routerLink]="['/engineoil', oil._id]">
+                        <div class="card-header">
+                            <img src="assets/images/{{ oil.image }}" height="275" width="300" />
+                        </div>
+                        <div class="card-header">
+                            EAN: {{oil.ean}}
+                        </div>
+                        <div class="card-header">
+                            Oil: {{oil.oil}}
+                        </div>
+                        <div class="card-header">
+                            Price: £{{oil.price}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn bg-black text-white" (click) ="previousPage()">
+                    Previous
+                </button>    
+            </div>
+            <div class="col-sm-6 text-end">
+                <button class="btn bg-black text-white" (click) ="nextPage()">
+                    Next
+                </button>    
+            </div>
+        </div>
+    </div>
+</body>

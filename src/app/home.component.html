@@ -1,0 +1,28 @@
+
+    <body>
+        <div class="wrapper">
+            <div class="logo">
+                <img src="background-image.jpg" alt="">
+            </div>
+        </div>
+    <div class="welcome-text">
+        <form [formGroup]="tyrelist" class="tyrelist" (ngSubmit)="onSubmit()" style="padding-top:50;">
+            <input type="text" id="search" name="search" class="form-control" formControlName="search">
+            <button class="btn btn-warning text-white" class="SearchButton" style="margin-left: centre; margin-right: centre; padding-top: 50;">Search</button>
+        </form> 
+            <h1>
+    CarPartsTrading<span>.com</span></h1>
+    <a href="http://localhost:4200/tyres">Tyres</a>
+    <a href="http://localhost:4200/filters">Filters</a>
+    <br>
+    <a href="http://localhost:4200/engine">Engine Oil</a>
+    <a href="http://localhost:4200/brakes">Brakes</a>
+    <br>
+    <a href="http://localhost:4200/vintageparts">Vintage Parts</a>
+    <a href="http://localhost:4200/batteries">Batteries</a>
+
+        </div>
+
+
+    </body>
+

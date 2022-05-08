@@ -1,0 +1,34 @@
+<body>
+    <div class ="container" style="margin-top: 100px;">
+        <div class ="row">
+            <div class="col-sm-12">
+                <div *ngFor="let oil of oil_list | async">
+                    <div class="card text-white bg-black mb-3" 
+                        style="width: 30rem; margin: auto">
+                        <div class="card-header">
+                            <img src="assets/images/{{ oil.image }}" height="275" width="300"/> 
+                        </div>
+                        <div class="card-header">
+                            Ean: {{oil.ean}}
+                        </div>
+                        <div class="card-header">
+                            Brake: {{oil.oil}}
+                        </div>
+                            <div class="card-body">
+                            Seller: {{oil.seller}}
+                        </div>
+                        <div class="card-body">
+                            Price: £{{oil.price}}
+                        </div>
+                        <a type="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PEY66GYNL9M28" class="btn btn-warning">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+

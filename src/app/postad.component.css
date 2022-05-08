@@ -1,0 +1,9 @@
+body {
+    margin-top: 100px;
+    background-image: url('Background.jpg');
+    height: 100vh;
+  }
+
+.formtext{
+    color: white
+}
